@@ -50,10 +50,10 @@ if (isset($_POST['login'])) {
 	<!-- Automatic element centering -->
 	<div class="lockscreen-wrapper">
 		<div class="lockscreen-logo">
-			<a href=""><b>Neonatal Diabetes Panel</b></a>
+			<a href=""><b>Health Advisory System</b></a>
 		</div>
 		<!-- User name -->
-		<div class="lockscreen-name">ANITA MUTHEKI </div>
+		<div class="lockscreen-name">Joshua Makori</div>
 
 		<!-- START LOCK SCREEN ITEM -->
 		<div class="lockscreen-item">

@@ -6,7 +6,7 @@
             <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-            <a href="#" class="d-block">ANITA MUTHEKI</a>
+            <a href="#" class="d-block">Joshua Makori</a>
         </div>
     </div>
 
@@ -15,96 +15,81 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
             <li class="nav-item has-treeview">
                 <a href="#" class="nav-link">
-                <i class="fas fa-user-plus"> </i>
-                    <p>
-                        Doctor
-                        <i class="right fas fa-angle-left"></i>
-                    </p>
-                </a>
-                <ul class="nav nav-treeview">
-                    <li class="nav-item">
-                        <a href="" class="nav-link">
-                        <i class="fas fa-info-circle"></i>
-                            <p>Add a Doctor</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="" class="nav-link">
-                        <i class="fas fa-info-circle"></i></i>
-                            <p>Manage Doctors</p>
-                        </a>
-                    </li>
-                </ul>
-            </li>
-            <li class="nav-item has-treeview">
-                <a href="#" class="nav-link">
                     <i class="fas fa-plus"></i>
                     <p>
-                        Health Tips
+                        Add
                         <i class="right fas fa-angle-left"></i>
                     </p>
                 </a>
                 <ul class="nav nav-treeview">
                     <li class="nav-item">
-                        <a href="pages/charts/chartjs.html" class="nav-link">
-                        <i class="fas fa-info-circle"></i>
-                            <p>Add a Health Tip</p>
+                        <a href="add_diet_tips.php" class="nav-link">
+                        <i class="fas fa-info-circle"></i></i>
+                            <p>Add diet tips</p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="pages/charts/flot.html" class="nav-link">
-                        <i class="fas fa-info-circle"></i>
-                            <p>Manage Health Tips</p>
+                        <a href="addherbs.php" class="nav-link">
+                        <i class="fas fa-info-circle"></i></i>
+                            <p>Add herbs</p>
                         </a>
                     </li>
                 </ul>
-            </li>
-            <li class="nav-item">
-                <a href="pages/widgets.html" class="nav-link">
-                <i class="fas fa-thumbs-up"></i></i>
-                    <p>
-                        Approve Doctors
-                    </p>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="pages/widgets.html" class="nav-link">
-                <i class="fas fa-thumbs-up"></i></i>
-                    <p>
-                        Approve Testimonies
-                    </p>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="pages/widgets.html" class="nav-link">
-                    <i class="fas fa-tasks"></i>
-                    <p>
-                        Manage users
-                    </p>
-                </a>
             </li>
             <li class="nav-item has-treeview">
                 <a href="#" class="nav-link">
-                <i class="fas fa-user-plus"> </i>
+                    <i class="fas fa-user-plus"></i>
                     <p>
-                        Doctor Reviews
+                        Consultant
                         <i class="right fas fa-angle-left"></i>
                     </p>
                 </a>
                 <ul class="nav nav-treeview">
                     <li class="nav-item">
-                        <a href="" class="nav-link">
-                        <i class="fas fa-thumbs-up"></i></i>
-                            <p>Approve reviews</p>
+                        <a href="add_consultant.php" class="nav-link">
+                        <i class="fas fa-info-circle"></i>
+                            <p>Add a Consultant</p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="" class="nav-link">
-                        <i class="fas fa-info-circle"></i></i>
-                            <p>Manage reviews</p>
+                        <a href="manage_consultants.php" class="nav-link">
+                        <i class="fas fa-info-circle"></i>
+                            <p>Manage Consultant</p>
                         </a>
                     </li>
                 </ul>
+            </li>
+            <li class="nav-item">
+                <a href="manage_diets.php" class="nav-link">
+                    <i class="fas fa-tasks"></i>
+                    <p>
+                        Manage Diet Tips
+                    </p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="manage_herbs.php" class="nav-link">
+                <i class="fas fa-seedling"></i>
+                    <p>
+                        Manage Herbs
+                    </p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="manage_reviews.php" class="nav-link">
+                <i class="far fa-comments"></i>
+                    <p>
+                        Manage reviews
+                    </p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="manage_users.php" class="nav-link">
+                <i class="fas fa-users-cog"></i>
+                    <p>
+                        Manage Users
+                    </p>
+                </a>
             </li>
             <li class="nav-item">
                 <a href="pages/widgets.html" class="nav-link">
