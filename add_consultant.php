@@ -60,7 +60,7 @@ check_login();
 
                                     require_once('include/config.php');
                             
-                                    $sql = "INSERT INTO herbs_consultant (phone,id_number,location,image,date) VALUES ('$cname','$cphone','$cidnumber','$lcacation','$file_name','$date')";
+                                    $sql = "INSERT INTO herbs_consultant (name,phone,id_number,location,image,date) VALUES ('$cname','$cphone','$cidnumber','$lcacation','$file_name','$date')";
                                     $data = mysqli_query($mysqli, $sql);
                                     if ($data) {
                                         move_uploaded_file($file_tmp, "img/" . $file_name);
