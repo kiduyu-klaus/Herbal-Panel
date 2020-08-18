@@ -5,7 +5,7 @@ function getProducts(){
     $db = new $mysqli;
     // array for json response
     $response = array();
-    $response["Categories"] = array();
+    $response["Tips"] = array();
 
 
     
