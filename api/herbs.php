@@ -5,7 +5,7 @@ function getProducts(){
     $db = new $mysqli;
     // array for json response
     $response = array();
-    $response["Tips"] = array();
+    $response["Herbs"] = array();
 
 
     
@@ -27,7 +27,7 @@ function getProducts(){
         $response["success"] = 1;
 
         // push category to final json array
-        array_push($response["Tips"], $tmp);
+        array_push($response["Herbs"], $tmp);
         }
          
         // keeping response header to json
