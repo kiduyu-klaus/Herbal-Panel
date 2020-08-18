@@ -20,7 +20,7 @@ check_login();
                             ADD NEW CONSULTANT
                         </div>
                         <div class="panel-body">
-                            <form name="form" method="post">
+                            <form  method="POST" enctype="multipart/form-data">
                                 <input type="text" name="name" class="form-control" placeholder="Consultant Name"> <br>
                                 <input type="text" name="phone" class="form-control" placeholder="Consultant Phone Number"><br>
                                 <input type="text" name="idnumber" class="form-control" placeholder="Consultant Id Number"><br>
@@ -30,25 +30,47 @@ check_login();
                                 <input type="submit" name="add" value="Add New" class="btn btn-primary">
                             </form>
                             <?php
-                            if (isset($_POST['add'])) {
-                                $room = $_POST['troom'];
-                                $bed = $_POST['bed'];
-                                $place = 'Free';
+                            if (isset($_POST['add'])) {                               
 
-                                $check = "SELECT * FROM room WHERE type = '$room' AND bedding = '$bed'";
-                                $rs = mysqli_query($con, $check);
-                                $data = mysqli_fetch_array($rs, MYSQLI_NUM);
-                                if ($data[0] > 1) {
-                                    echo "<script type='text/javascript'> alert('Room Already in Exists')</script>";
-                                } else {
+                                $errors = array();
+                                $file_name = $_FILES['image']['name'];
+                                $file_size = $_FILES['image']['size'];
+                                $file_tmp = $_FILES['image']['tmp_name'];
+                                $file_type = $_FILES['image']['type'];
+                                $temp_expload=explode('.', $_FILES['image']['name']);
 
+                                $file_ext = strtolower(end($temp_expload));
 
-                                    $sql = "INSERT INTO `room`( `type`, `bedding`,`place`) VALUES ('$room','$bed','$place')";
-                                    if (mysqli_query($con, $sql)) {
-                                        echo '<script>alert("New Room Added") </script>';
+                                $extensions = array("jpeg", "jpg", "png");
+
+                                if (in_array($file_ext, $extensions) === false) {
+                                    $errors[] = "extension not allowed, please choose a JPEG or PNG file.";
+                                }
+
+                                if ($file_size > 2097152) {
+                                    $errors[] = 'File size must be excately 2 MB';
+                                }
+
+                                if (empty($errors) == true) {
+                                    $cname = $_POST['name'];
+                                    $cphone = $_POST['phone'];
+                                    $cidnumber = $_POST['idnumber'];
+                                    $lcacation = $_POST['location'];
+                                    $date= date('Y-m-d H:i:s');
+
+                                    require_once('include/config.php');
+                            
+                                    $sql = "INSERT INTO herbs_herbs (name,description,disease,image,date) VALUES ('$hname','$hdescri','$hdisease','$file_name','$date')";
+                                    $data = mysqli_query($mysqli, $sql);
+                                    if ($data) {
+                                        move_uploaded_file($file_tmp, "img/" . $file_name);
+                                        echo "Herb added successfully";
                                     } else {
-                                        echo '<script>alert("Sorry ! Check The System") </script>';
+                                        echo "failed" . mysqli_error($mysqli);
                                     }
+
+                                } else {
+                                    print_r($errors);
                                 }
                             }
 

@@ -19,7 +19,7 @@ check_login();
                             ADD NEW ROOM
                         </div>
                         <div class="panel-body">
-                            <form name="form" method="post">
+                            <form  method="POST" enctype="multipart/form-data">
                                 <input type="text" name="name" class="form-control" placeholder="Herb Name"> <br>
                                 <input type="text" name="description" class="form-control" placeholder="Herb Description"><br>
                                 <input type="text" name="disease" class="form-control" placeholder="Disease Cured"><br>
@@ -29,25 +29,51 @@ check_login();
                             </form>
                             <?php
                             if (isset($_POST['add'])) {
-                                $room = $_POST['troom'];
-                                $bed = $_POST['bed'];
-                                $place = 'Free';
-
-                                $check = "SELECT * FROM room WHERE type = '$room' AND bedding = '$bed'";
-                                $rs = mysqli_query($con, $check);
-                                $data = mysqli_fetch_array($rs, MYSQLI_NUM);
-                                if ($data[0] > 1) {
-                                    echo "<script type='text/javascript'> alert('Room Already in Exists')</script>";
-                                } else {
 
 
-                                    $sql = "INSERT INTO `room`( `type`, `bedding`,`place`) VALUES ('$room','$bed','$place')";
-                                    if (mysqli_query($con, $sql)) {
-                                        echo '<script>alert("New Room Added") </script>';
-                                    } else {
-                                        echo '<script>alert("Sorry ! Check The System") </script>';
-                                    }
+                                $errors = array();
+                                $file_name = $_FILES['image']['name'];
+                                $file_size = $_FILES['image']['size'];
+                                $file_tmp = $_FILES['image']['tmp_name'];
+                                $file_type = $_FILES['image']['type'];
+                                $temp_expload=explode('.', $_FILES['image']['name']);
+
+                                $file_ext = strtolower(end($temp_expload));
+
+                                $extensions = array("jpeg", "jpg", "png");
+
+                                if (in_array($file_ext, $extensions) === false) {
+                                    $errors[] = "extension not allowed, please choose a JPEG or PNG file.";
                                 }
+
+                                if ($file_size > 2097152) {
+                                    $errors[] = 'File size must be excately 2 MB';
+                                }
+
+                                if (empty($errors) == true) {
+                                    $hname = $_POST['name'];
+                                    $hdescri = $_POST['description'];
+                                    $hdisease = $_POST['disease'];
+
+                                    $date= date('Y-m-d H:i:s');
+
+                                    require_once('include/config.php');
+                            
+                                    $sql = "INSERT INTO herbs_herbs (name,description,disease,image,date) VALUES ('$hname','$hdescri','$hdisease','$file_name','$date')";
+                                    $data = mysqli_query($mysqli, $sql);
+                                    if ($data) {
+                                        move_uploaded_file($file_tmp, "img/" . $file_name);
+                                        echo "Herb added successfully";
+                                    } else {
+                                        echo "failed" . mysqli_error($mysqli);
+                                    }
+
+                                } else {
+                                    print_r($errors);
+                                }
+
+                                
+                               
                             }
 
                             ?>

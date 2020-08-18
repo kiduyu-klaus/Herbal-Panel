@@ -44,7 +44,7 @@ check_login();
 
                         <div class="panel-body">
 
-                            <form name="form" method="post" enctype="multipart/form-data">
+                            <form method="POST" enctype="multipart/form-data">
 
                                 <input type="text" name="name" class="form-control" placeholder="Tip title" required> <br>
 
@@ -67,8 +67,9 @@ check_login();
                                 $file_size = $_FILES['image']['size'];
                                 $file_tmp = $_FILES['image']['tmp_name'];
                                 $file_type = $_FILES['image']['type'];
+                                $temp_expload=explode('.', $_FILES['image']['name']);
 
-                                $file_ext = strtolower(end(explode('.', $_FILES['image']['name'])));
+                                $file_ext = strtolower(end($temp_expload));
 
                                 $extensions = array("jpeg", "jpg", "png");
 
@@ -83,12 +84,11 @@ check_login();
                                 if (empty($errors) == true) {
                                     $u_name = $_POST['name'];
                                     $u_descr  = $_POST['description'];
-                                    $dd  = time();
-                                    $date =date('l, F d, Y h:i:s a.', $dd);
+                                    $date= date('Y-m-d H:i:s');
 
                                     require_once('include/config.php');
                             
-                                    $sql = "INSERT INTO 'herbs_herbs'('title','description','image','date') VALUES ('$u_name','$u_descr','$file_name','$date'";
+                                    $sql = "INSERT INTO herbs_tips (title,description,image,date) VALUES ('$u_name','$u_descr','$file_name','$date')";
                                     $data = mysqli_query($mysqli, $sql);
                                     if ($data) {
                                         move_uploaded_file($file_tmp, "img/" . $file_name);
