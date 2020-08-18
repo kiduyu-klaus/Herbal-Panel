@@ -21,7 +21,8 @@ function getProducts(){
         $tmp["id"] = $row["id"];
         $tmp["title"] = $row["title"];
         $tmp["description"] = $row["description"];
-        $tmp["image"] = $row["date"];
+        $tmp["image"] = $row["image"];
+        $tmp["date"] = $row["date"];
         $response["success"] = 1;
 
         // push category to final json array
