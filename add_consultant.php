@@ -21,10 +21,10 @@ check_login();
                         </div>
                         <div class="panel-body">
                             <form  method="POST" enctype="multipart/form-data">
-                                <input type="text" name="name" class="form-control" placeholder="Consultant Name"> <br>
-                                <input type="text" name="phone" class="form-control" placeholder="Consultant Phone Number"><br>
-                                <input type="text" name="idnumber" class="form-control" placeholder="Consultant Id Number"><br>
-                                <input type="text" name="location" class="form-control" placeholder="Consultant Location"><br>
+                                <input type="text" name="name" class="form-control" placeholder="Consultant Name" required> <br>
+                                <input type="text" name="phone" class="form-control" placeholder="Consultant Phone Number" required><br>
+                                <input type="text" name="idnumber" class="form-control" placeholder="Consultant Id Number" required><br>
+                                <input type="text" name="location" class="form-control" placeholder="Consultant Location" required><br>
                                 <input type="file" name="image" class="form-control"><br>
                                 
                                 <input type="submit" name="add" value="Add New" class="btn btn-primary">
@@ -60,7 +60,7 @@ check_login();
 
                                     require_once('include/config.php');
                             
-                                    $sql = "INSERT INTO herbs_herbs (name,description,disease,image,date) VALUES ('$hname','$hdescri','$hdisease','$file_name','$date')";
+                                    $sql = "INSERT INTO herbs_consultant (phone,id_number,location,image,date) VALUES ('$cname','$cphone','$cidnumber','$lcacation','$file_name','$date')";
                                     $data = mysqli_query($mysqli, $sql);
                                     if ($data) {
                                         move_uploaded_file($file_tmp, "img/" . $file_name);
